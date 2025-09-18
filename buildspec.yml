@@ -6,6 +6,7 @@ phases:
       - python -m pip install --upgrade pip
       - pip install -r requirements.txt
       - mkdir -p artifacts
+
   build:
     commands:
       - echo "1) Pruebas unitarias"
@@ -17,5 +18,5 @@ phases:
 
 artifacts:
   files:
-    - 'artifacts/**/*'
+    - artifacts/**
   discard-paths: no
