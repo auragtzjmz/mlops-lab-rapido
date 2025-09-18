@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - python -m pip install --upgrade pip
+      - pip install -r requirements.txt
+      - mkdir -p artifacts
+  build:
+    commands:
+      - echo "1) Pruebas unitarias"
+      - pytest -q
+      - echo "2) Entrenamiento y generación de métricas"
+      - python src/train.py
+      - echo "3) Evaluación con umbral"
+      - python src/evaluate.py
+
+artifacts:
+  files:
+    - 'artifacts/**/*'
+  discard-paths: no
